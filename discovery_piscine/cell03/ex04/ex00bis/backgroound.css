@@ -1,0 +1,2 @@
+body { height: 100vh; display: flex; justify-content: center; align-items: center; margin: 0; }
+button { padding: 20px 40px; font-size: 20px; cursor: pointer; }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Balloon</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="balloon" onclick="pumpBalloon()" onmouseleave="shrinkBalloon()"></div>
+
+    <script>
+        var balloon = document.getElementById('balloon');
+        var size = 200;
+        var colorIdx = 0;
+        var colors = ['red', 'green', 'blue'];
+
+        function pumpBalloon() {
+
+            size += 10;
+
+            if (size > 420) {
+                size = 200;
+                colorIdx = 0; 
+            } else {
+                colorIdx++;
+                if (colorIdx > 2) {
+                    colorIdx = 0;
+                }
+            }
+            
+            updateBalloon();
+        }
+
+        function shrinkBalloon() {
+            if (size > 200) {
+                size -= 5;
+            }
+
+            colorIdx--;
+            if (colorIdx < 0) {
+                colorIdx = 2;
+            }
+
+            updateBalloon();
+        }
+
+        function updateBalloon() {
+            balloon.style.width = size + 'px';
+            balloon.style.height = size + 'px';
+            balloon.style.backgroundColor = colors[colorIdx];
+        }
+    </script>
+
+</body>
+</html>
